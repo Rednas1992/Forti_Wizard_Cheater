@@ -1,0 +1,103 @@
+<html lang="en">
+  <head>
+    <link rel="icon" href="Busselot_blog_logo.ico" sizes="any">
+    <link rel="icon" type="image/png" href="Busselot_blog_logo.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="Busselot_blog_logo.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forti Wizard Cheater</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <img src="Busselot_blog_logo.png" alt="Busselot" class="logo-img" width="36" height="36">
+        <div>
+          <h1>Forti Wizard Cheater - From Blog.Busselot.org</h1>
+          <p class="subtitle">
+            Upload your <code>.conf</code>, press <strong>Start analysis</strong> and get CLI blocks
+            to remove comments. Search for “created by … wizard” or use your own wildcard.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Info banner now BELOW the header -->
+    <aside class="top-banner" role="note" style="padding:12px 16px;">
+      <p style="margin:0; line-height:1.5;">
+        This tool helps you quickly remove comments from a FortiGate configuration.
+        For the full background, why I built it and how it works, read my article on
+        <a href="https://blog.busselot.org" target="_blank" rel="noopener">My Blog</a>.
+        This script stores nothing; everything runs in your browser, so it’s safe to upload your config.
+        Don’t just take my word for it, check the source code on
+        <a href="https://github.com/Rednas1992/astra-blog-final" target="_blank" rel="noopener">GitHub</a>,
+        or copy it and run it locally if you prefer.
+      </p>
+    </aside>
+
+    <main class="container">
+      <section class="card upload">
+        <h2>1) Upload FortiGate config</h2>
+        <div class="file-row">
+          <input id="fileInput" type="file" accept=".conf,.txt" />
+          <button id="startBtn" class="btn" type="button" disabled>Start analysis</button>
+        </div>
+
+        <div class="row" style="margin-top:14px; gap:.75rem; align-items:center; flex-wrap:wrap">
+          <label class="inline">
+            <input type="checkbox" id="cbWizard" />
+            Only comments containing <code>created by … wizard</code>
+          </label>
+
+          <label class="inline">
+            <input type="checkbox" id="cbWildcard" />
+            Search comments using wildcard
+          </label>
+
+          <input
+            id="wildcardInput"
+            type="text"
+            placeholder="e.g. web or vpn*"
+            disabled
+            style="min-width:260px"
+          />
+        </div>
+
+        <p class="muted" style="margin-top:.25rem">
+          Tip: you can leave both checkboxes off — then all comments in the config are shown.
+        </p>
+      </section>
+
+      <section class="card results">
+        <h2>2) Found comments</h2>
+        <div id="summary" class="summary muted">Nothing analyzed yet.</div>
+        <div id="matches" class="matches"></div>
+      </section>
+
+      <section class="card output">
+        <div class="row between">
+          <h2>3) CLI output (to remove comments)</h2>
+          <div class="actions">
+            <button id="copyBtn" class="btn">Copy CLI</button>
+            <button id="downloadBtn" class="btn">Download .cli</button>
+          </div>
+        </div>
+        <textarea id="cliOut" class="cli" spellcheck="false" placeholder="# CLI will appear here…" readonly></textarea>
+        <details class="hint"><summary>How to use?</summary>
+          <ol>
+            <li>Copy or download the CLI.</li>
+            <li>Paste it in the FortiGate CLI (via SSH/console).</li>
+          </ol>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Runs entirely in your browser. Nothing is uploaded.</p>
+    </footer>
+  </body>
+</html>
