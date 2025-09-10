@@ -1,7 +1,7 @@
 # Forti Wizard Cheater — FortiGate Wizard Comment Cleaner
 
 > **Live demo:** https://fortiwizardcheater.busselot.org/  
-> **Background & article:** https://blog.busselot.org
+> **Background & article:** https://blog.busselot.org/blog/forti-wizard-cheater-article-en/
 
 This project provides a small, client-side web tool to quickly **find and remove comments** in FortiGate configuration files. It was created for my blog at **blog.busselot.org** and is available online at **fortiwizardcheater.busselot.org**.
 
